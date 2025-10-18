@@ -94,33 +94,6 @@
             margin: 0 auto 30px;
         }
         
-        .realtime-stats {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 15px;
-            margin: 25px 0;
-        }
-        
-        .stat-card {
-            background: var(--light-bg);
-            padding: 20px;
-            border-radius: 16px;
-            border: 1px solid var(--border);
-            text-align: center;
-        }
-        
-        .stat-value {
-            font-size: 2rem;
-            font-weight: 700;
-            color: var(--primary);
-            margin-bottom: 5px;
-        }
-        
-        .stat-label {
-            font-size: 0.9rem;
-            color: var(--text-secondary);
-        }
-        
         .api-status {
             display: flex;
             justify-content: center;
@@ -180,10 +153,6 @@
         
         .status-inactive {
             background: var(--error);
-        }
-        
-        .status-loading {
-            background: var(--warning);
         }
         
         .input-section {
@@ -283,6 +252,7 @@
             width: 100%;
             display: block;
             border-radius: 16px;
+            max-height: 500px;
         }
         
         .play-btn {
@@ -644,26 +614,6 @@
             color: var(--success);
         }
         
-        /* Live Indicator */
-        .live-indicator {
-            display: inline-flex;
-            align-items: center;
-            gap: 5px;
-            background: var(--error);
-            color: white;
-            padding: 4px 8px;
-            border-radius: 12px;
-            font-size: 0.7rem;
-            font-weight: 600;
-            margin-left: 10px;
-            animation: blink 2s infinite;
-        }
-        
-        @keyframes blink {
-            0%, 50% { opacity: 1; }
-            51%, 100% { opacity: 0.5; }
-        }
-        
         /* Responsive Design */
         @media (max-width: 768px) {
             .container {
@@ -677,11 +627,6 @@
             
             .subtitle {
                 font-size: 1.1rem;
-            }
-            
-            .realtime-stats {
-                grid-template-columns: repeat(2, 1fr);
-                gap: 10px;
             }
             
             .api-status {
@@ -767,10 +712,6 @@
                 font-size: 1rem;
             }
             
-            .realtime-stats {
-                grid-template-columns: 1fr;
-            }
-            
             .step {
                 padding: 20px 15px;
             }
@@ -817,7 +758,7 @@
 
     <!-- Iklan Header -->
     <div class="ad-container ad-top">
-        <div class="ad-label">Iklan <span class="live-indicator">LIVE</span></div>
+        <div class="ad-label">Iklan</div>
         <div id="frame">
             <iframe data-aa='2414184' src='//acceptable.a-ads.com/2414184/?size=Adaptive'
                 style='border:0; padding:0; width:70%; height:120px; overflow:hidden;display: block;margin: auto'></iframe>
@@ -830,29 +771,9 @@
                 <div class="logo-icon">
                     <i class="fas fa-video"></i>
                 </div>
-                <h1>TikTok Downloader Premium <span class="live-indicator">REALTIME</span></h1>
+                <h1>TikTok Downloader Premium</h1>
             </div>
             <p class="subtitle">Unduh video TikTok tanpa watermark dengan kualitas HD dan multiple API backup system</p>
-            
-            <!-- Real-time Statistics -->
-            <div class="realtime-stats">
-                <div class="stat-card">
-                    <div class="stat-value" id="total-downloads">0</div>
-                    <div class="stat-label">Total Downloads</div>
-                </div>
-                <div class="stat-card">
-                    <div class="stat-value" id="active-users">1</div>
-                    <div class="stat-label">Pengguna Aktif</div>
-                </div>
-                <div class="stat-card">
-                    <div class="stat-value" id="success-rate">100%</div>
-                    <div class="stat-label">Success Rate</div>
-                </div>
-                <div class="stat-card">
-                    <div class="stat-value" id="avg-time">2.3s</div>
-                    <div class="stat-label">Rata-rata Waktu</div>
-                </div>
-            </div>
             
             <div class="api-status">
                 <div class="status-item">
@@ -915,7 +836,7 @@
         
         <!-- Iklan Middle -->
         <div class="ad-container ad-middle">
-            <div class="ad-label">Iklan <span class="live-indicator">LIVE</span></div>
+            <div class="ad-label">Iklan</div>
             <div id="frame">
                 <iframe data-aa='2414184' src='//acceptable.a-ads.com/2414184/?size=Adaptive'
                     style='border:0; padding:0; width:70%; height:120px; overflow:hidden;display: block;margin: auto'></iframe>
@@ -947,10 +868,6 @@
                     <div class="info-item">
                         <span class="info-label">Durasi</span>
                         <span class="info-value video-duration">-</span>
-                    </div>
-                    <div class="info-item">
-                        <span class="info-label">Kualitas</span>
-                        <span class="info-value video-quality">HD</span>
                     </div>
                     <div class="info-item">
                         <span class="info-label">Pembuat</span>
@@ -1000,7 +917,7 @@
         
         <!-- Iklan Bottom -->
         <div class="ad-container ad-bottom">
-            <div class="ad-label">Iklan <span class="live-indicator">LIVE</span></div>
+            <div class="ad-label">Iklan</div>
             <div id="frame">
                 <iframe data-aa='2414184' src='//acceptable.a-ads.com/2414184/?size=Adaptive'
                     style='border:0; padding:0; width:70%; height:120px; overflow:hidden;display: block;margin: auto'></iframe>
@@ -1040,12 +957,6 @@
             const downloadStatus = document.getElementById('download-status');
             const downloadStatusText = document.getElementById('download-status-text');
             
-            // Real-time stats elements
-            const totalDownloadsEl = document.getElementById('total-downloads');
-            const activeUsersEl = document.getElementById('active-users');
-            const successRateEl = document.getElementById('success-rate');
-            const avgTimeEl = document.getElementById('avg-time');
-            
             const statusDots = {
                 api1: document.getElementById('status-api1'),
                 api2: document.getElementById('status-api2'),
@@ -1055,67 +966,24 @@
                 api6: document.getElementById('status-api6')
             };
             
-            // All 6 TikTok API endpoints dengan real monitoring
+            // Real TikTok API endpoints
             const APIS = [
                 {
                     name: "TikWM",
                     url: "https://www.tikwm.com/api/",
-                    active: true,
-                    type: "real",
-                    lastChecked: Date.now(),
-                    responseTime: 1200
+                    active: true
                 },
                 {
-                    name: "SnapTik",
+                    name: "SnapTik", 
                     url: "https://snaptik.app/API.php",
-                    active: true,
-                    type: "real",
-                    lastChecked: Date.now(),
-                    responseTime: 800
+                    active: true
                 },
                 {
                     name: "SSSTik",
                     url: "https://ssstik.io/abc?url=dl",
-                    active: true,
-                    type: "real",
-                    lastChecked: Date.now(),
-                    responseTime: 1500
-                },
-                {
-                    name: "TikMate",
-                    url: "https://www.tikmate.cc/api",
-                    active: true,
-                    type: "real",
-                    lastChecked: Date.now(),
-                    responseTime: 900
-                },
-                {
-                    name: "MusicalDown",
-                    url: "https://musicaldown.com/api",
-                    active: true,
-                    type: "real",
-                    lastChecked: Date.now(),
-                    responseTime: 1100
-                },
-                {
-                    name: "TikDownload",
-                    url: "https://tikdownload.org/api",
-                    active: true,
-                    type: "real",
-                    lastChecked: Date.now(),
-                    responseTime: 1300
+                    active: true
                 }
             ];
-            
-            // Real-time statistics
-            let realtimeStats = {
-                totalDownloads: 0,
-                activeUsers: 1,
-                successfulDownloads: 0,
-                failedDownloads: 0,
-                totalProcessingTime: 0,
-                downloadCount: 0
-            };
 
             // Store current video data
             let currentVideoData = null;
@@ -1127,60 +995,33 @@
                 // Start API monitoring
                 startAPIMonitoring();
                 
-                // Start stats updates
-                startStatsUpdates();
-                
-                // Start ad rotation (simulated)
+                // Start ad rotation
                 startAdRotation();
-                
-                // Update initial stats
-                updateRealtimeStats();
             }
             
             function startAPIMonitoring() {
-                // Monitor API status every 5 seconds
-                setInterval(() => {
-                    APIS.forEach((api, index) => {
-                        // Simulate real API checking with random variations
-                        const checkTime = Math.random() * 1000 + 500;
-                        setTimeout(() => {
-                            const isActive = Math.random() > 0.1; // 90% uptime
-                            api.active = isActive;
-                            api.lastChecked = Date.now();
-                            api.responseTime = Math.random() * 1000 + 500;
-                            
-                            const statusDot = statusDots[`api${index + 1}`];
-                            if (statusDot) {
-                                if (isActive) {
-                                    statusDot.className = 'status-dot status-active pulsing';
-                                } else {
-                                    statusDot.className = 'status-dot status-inactive';
-                                }
+                // Monitor API status every 10 seconds
+                setInterval(async () => {
+                    for (let api of APIS) {
+                        try {
+                            const response = await fetchWithTimeout(api.url, 5000);
+                            api.active = response.ok;
+                        } catch (error) {
+                            api.active = false;
+                        }
+                        
+                        const apiIndex = APIS.indexOf(api) + 1;
+                        const statusDot = statusDots[`api${apiIndex}`];
+                        if (statusDot) {
+                            if (api.active) {
+                                statusDot.className = 'status-dot status-active pulsing';
+                            } else {
+                                statusDot.className = 'status-dot status-inactive';
                             }
-                        }, checkTime);
-                    });
+                        }
+                    }
                     updateAvailableApisCounter();
-                }, 5000);
-            }
-            
-            function startStatsUpdates() {
-                // Update stats every 3 seconds
-                setInterval(() => {
-                    // Simulate user activity
-                    realtimeStats.activeUsers = Math.max(1, Math.floor(Math.random() * 10));
-                    
-                    // Update success rate
-                    const total = realtimeStats.successfulDownloads + realtimeStats.failedDownloads;
-                    const rate = total > 0 ? (realtimeStats.successfulDownloads / total * 100).toFixed(1) : 100;
-                    realtimeStats.successRate = rate;
-                    
-                    // Update average time
-                    const avgTime = realtimeStats.downloadCount > 0 ? 
-                        (realtimeStats.totalProcessingTime / realtimeStats.downloadCount / 1000).toFixed(1) : 2.3;
-                    realtimeStats.avgTime = avgTime;
-                    
-                    updateRealtimeStats();
-                }, 3000);
+                }, 10000);
             }
             
             function startAdRotation() {
@@ -1188,7 +1029,6 @@
                 setInterval(() => {
                     const ads = document.querySelectorAll('.ad-container');
                     ads.forEach(ad => {
-                        // Simulate ad refresh by adding timestamp to prevent caching
                         const iframe = ad.querySelector('iframe');
                         if (iframe) {
                             const newSrc = iframe.src.replace(/\?t=\d+/, '') + '?t=' + Date.now();
@@ -1196,13 +1036,6 @@
                         }
                     });
                 }, 30000);
-            }
-            
-            function updateRealtimeStats() {
-                totalDownloadsEl.textContent = realtimeStats.totalDownloads.toLocaleString();
-                activeUsersEl.textContent = realtimeStats.activeUsers.toLocaleString();
-                successRateEl.textContent = realtimeStats.successRate + '%';
-                avgTimeEl.textContent = realtimeStats.avgTime + 's';
             }
             
             // Fungsi untuk memvalidasi URL TikTok
@@ -1219,9 +1052,6 @@
                 loader.style.display = 'none';
                 progressContainer.style.display = 'none';
                 downloadStatus.style.display = 'none';
-                
-                // Update stats
-                realtimeStats.failedDownloads++;
             }
             
             // Fungsi untuk menampilkan sukses
@@ -1229,9 +1059,6 @@
                 successText.textContent = message;
                 successMessage.style.display = 'block';
                 errorMessage.style.display = 'none';
-                
-                // Update stats
-                realtimeStats.successfulDownloads++;
             }
             
             // Fungsi untuk menyembunyikan pesan
@@ -1242,9 +1069,9 @@
             
             // Fungsi untuk menampilkan hasil
             function showResult(videoData, apiName) {
-                videoTitle.textContent = videoData.title || 'Video TikTok';
-                videoDuration.textContent = videoData.duration || 'Tidak diketahui';
-                videoAuthor.textContent = videoData.author || 'Tidak diketahui';
+                videoTitle.textContent = videoData.title;
+                videoDuration.textContent = videoData.duration;
+                videoAuthor.textContent = videoData.author;
                 apiUsed.textContent = apiName;
                 
                 if (videoData.previewUrl) {
@@ -1262,17 +1089,11 @@
             // Fungsi untuk mendapatkan API yang tersedia
             function getAvailableAPI() {
                 const availableAPIs = APIS.filter(api => api.active);
-                if (availableAPIs.length === 0) return null;
-                
-                // Pilih API dengan response time tercepat
-                return availableAPIs.reduce((fastest, current) => 
-                    current.responseTime < fastest.responseTime ? current : fastest
-                );
+                return availableAPIs.length > 0 ? availableAPIs[0] : null;
             }
             
-            // Fungsi untuk mendapatkan data video dari API
+            // Fungsi REAL untuk mendapatkan data video dari TikTok API
             async function fetchTikTokVideo(url) {
-                const startTime = Date.now();
                 const api = getAvailableAPI();
                 
                 if (!api) {
@@ -1280,38 +1101,71 @@
                 }
                 
                 try {
-                    // Update progress dengan real-time feedback
-                    updateProgress(20, `Menggunakan ${api.name}...`);
+                    let apiUrl, response, data;
                     
-                    // Simulasi real API call dengan delay berdasarkan response time
-                    await new Promise(resolve => setTimeout(resolve, api.responseTime));
-                    
-                    const videoId = extractVideoId(url);
-                    if (!videoId) {
-                        throw new Error('URL TikTok tidak valid');
+                    switch(api.name) {
+                        case 'TikWM':
+                            apiUrl = `${api.url}?url=${encodeURIComponent(url)}`;
+                            response = await fetchWithTimeout(apiUrl, 15000);
+                            data = await response.json();
+                            
+                            if (data.code === 0 && data.data) {
+                                return {
+                                    title: data.data.title || 'Video TikTok',
+                                    author: data.data.author?.nickname || '@tiktok_user',
+                                    duration: data.data.duration ? `${data.data.duration} detik` : 'Tidak diketahui',
+                                    previewUrl: data.data.play,
+                                    downloadUrl: data.data.play,
+                                    audioUrl: data.data.music
+                                };
+                            } else {
+                                throw new Error(data.msg || 'Gagal mengambil data video');
+                            }
+                            
+                        case 'SnapTik':
+                            apiUrl = `https://snaptik.app/API.php?url=${encodeURIComponent(url)}`;
+                            response = await fetchWithTimeout(apiUrl, 15000);
+                            data = await response.json();
+                            
+                            if (data && data.success) {
+                                return {
+                                    title: data.title || 'Video TikTok',
+                                    author: data.author || '@tiktok_user',
+                                    duration: data.duration || 'Tidak diketahui',
+                                    previewUrl: data.video_url,
+                                    downloadUrl: data.video_url,
+                                    audioUrl: data.music_url
+                                };
+                            } else {
+                                throw new Error('Gagal mengambil data video dari SnapTik');
+                            }
+                            
+                        case 'SSSTik':
+                            apiUrl = `https://ssstik.io/abc?url=${encodeURIComponent(url)}`;
+                            response = await fetchWithTimeout(apiUrl, 15000);
+                            const text = await response.text();
+                            
+                            // Parse HTML response untuk mendapatkan data
+                            const parser = new DOMParser();
+                            const doc = parser.parseFromString(text, 'text/html');
+                            const title = doc.querySelector('title')?.textContent || 'Video TikTok';
+                            const videoUrl = extractVideoUrlFromSSSTik(text);
+                            
+                            if (videoUrl) {
+                                return {
+                                    title: title,
+                                    author: extractAuthorFromUrl(url) || '@tiktok_user',
+                                    duration: 'Tidak diketahui',
+                                    previewUrl: videoUrl,
+                                    downloadUrl: videoUrl,
+                                    audioUrl: null
+                                };
+                            } else {
+                                throw new Error('Gagal mengambil data video dari SSSTik');
+                            }
                     }
                     
-                    updateProgress(60, 'Memproses video...');
-                    
-                    // Simulasi processing time
-                    await new Promise(resolve => setTimeout(resolve, 800));
-                    
-                    // Data yang lebih real-time
-                    const demoVideoData = {
-                        title: `Video TikTok #${videoId.substring(0, 8)}`,
-                        author: '@tiktok_user',
-                        duration: Math.floor(Math.random() * 30 + 15) + ' detik',
-                        previewUrl: 'https://sample-videos.com/zip/10/mp4/SampleVideo_1280x720_1mb.mp4',
-                        downloadUrl: `https://tikdownloader.com/download/${videoId}.mp4`,
-                        audioUrl: `https://tikdownloader.com/audio/${videoId}.mp3`
-                    };
-                    
-                    // Update processing time stats
-                    const processingTime = Date.now() - startTime;
-                    realtimeStats.totalProcessingTime += processingTime;
-                    realtimeStats.downloadCount++;
-                    
-                    return demoVideoData;
+                    throw new Error(`API ${api.name} tidak merespons dengan format yang diharapkan`);
                     
                 } catch (error) {
                     console.error(`Error with ${api.name}:`, error);
@@ -1319,10 +1173,33 @@
                 }
             }
             
-            // Fungsi untuk extract video ID dari URL TikTok
-            function extractVideoId(url) {
-                const match = url.match(/\/(\d+)(?:\?|$)/);
-                return match ? match[1] : 'demo_' + Math.random().toString(36).substring(2, 10);
+            // Helper function untuk extract video URL dari SSSTik
+            function extractVideoUrlFromSSSTik(html) {
+                const match = html.match(/https:\/\/[^"']*\.mp4[^"']*/);
+                return match ? match[0] : null;
+            }
+            
+            // Helper function untuk extract author dari URL
+            function extractAuthorFromUrl(url) {
+                const match = url.match(/@([^/?]+)/);
+                return match ? `@${match[1]}` : null;
+            }
+            
+            // Fungsi fetch dengan timeout
+            function fetchWithTimeout(url, timeout = 15000) {
+                return Promise.race([
+                    fetch(url, {
+                        method: 'GET',
+                        mode: 'cors',
+                        headers: {
+                            'Accept': 'application/json',
+                            'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36'
+                        }
+                    }),
+                    new Promise((_, reject) =>
+                        setTimeout(() => reject(new Error('Timeout - Server terlalu lama merespons')), timeout)
+                    )
+                ]);
             }
             
             // Fungsi untuk update progress bar
@@ -1359,19 +1236,19 @@
                 // Tampilkan loader dan progress
                 loader.style.display = 'block';
                 progressContainer.style.display = 'block';
-                updateProgress(10, 'Memulai proses...');
+                updateProgress(10, 'Memvalidasi URL...');
                 
                 try {
                     // Dapatkan data video dari API
+                    updateProgress(30, 'Mengambil data video dari TikTok...');
                     const videoData = await fetchTikTokVideo(url);
                     const api = getAvailableAPI();
+                    
+                    updateProgress(70, 'Memproses video...');
                     
                     // Sembunyikan loader, selesaikan progress
                     loader.style.display = 'none';
                     updateProgress(100, 'Selesai! Video siap diunduh.');
-                    
-                    // Update total downloads
-                    realtimeStats.totalDownloads++;
                     
                     // Tampilkan hasil
                     showResult(videoData, api.name);
@@ -1382,7 +1259,7 @@
                 }
             }
             
-            // Fungsi untuk mendownload file
+            // Fungsi REAL untuk mendownload file dari URL asli
             async function downloadFile(type) {
                 if (!currentVideoData) {
                     showError('Tidak ada data video yang tersedia. Silakan proses video terlebih dahulu.');
@@ -1394,17 +1271,22 @@
                     downloadStatus.style.display = 'block';
                     downloadStatusText.innerHTML = `<i class="fas fa-spinner fa-spin"></i> Menyiapkan download ${type.toUpperCase()}...`;
                     
-                    // Simulasi proses download dengan real-time progress
-                    for (let i = 0; i <= 100; i += 10) {
-                        await new Promise(resolve => setTimeout(resolve, 100));
-                        downloadStatusText.innerHTML = `<i class="fas fa-spinner fa-spin"></i> Mengunduh ${type.toUpperCase()}... ${i}%`;
+                    const downloadUrl = type === 'video' ? currentVideoData.downloadUrl : currentVideoData.audioUrl;
+                    
+                    if (!downloadUrl) {
+                        throw new Error(`URL download ${type.toUpperCase()} tidak tersedia`);
                     }
                     
-                    // Buat URL download berdasarkan type
-                    const filename = `tiktok_${type}_${Date.now()}.${type === 'video' ? 'mp4' : 'mp3'}`;
+                    // Download file langsung dari URL TikTok
+                    downloadStatusText.innerHTML = `<i class="fas fa-spinner fa-spin"></i> Mengunduh ${type.toUpperCase()}...`;
                     
-                    // Untuk DEMO - kita buat blob data dummy untuk diunduh
-                    const blob = new Blob(['Demo TikTok Download - File ini adalah simulasi download. Dalam implementasi nyata, ini akan berisi video/audio TikTok asli.'], { type: type === 'video' ? 'video/mp4' : 'audio/mpeg' });
+                    const response = await fetchWithTimeout(downloadUrl, 30000);
+                    if (!response.ok) {
+                        throw new Error('Gagal mengunduh file dari server');
+                    }
+                    
+                    const blob = await response.blob();
+                    const filename = generateFilename(type);
                     const url = URL.createObjectURL(blob);
                     
                     // Buat elemen download
@@ -1416,7 +1298,9 @@
                     document.body.removeChild(a);
                     
                     // Cleanup
-                    URL.revokeObjectURL(url);
+                    setTimeout(() => {
+                        URL.revokeObjectURL(url);
+                    }, 1000);
                     
                     // Update status sukses
                     downloadStatusText.innerHTML = `<i class="fas fa-check-circle"></i> Download ${type.toUpperCase()} berhasil!`;
@@ -1428,14 +1312,19 @@
                     // Reset status setelah 3 detik
                     setTimeout(() => {
                         downloadStatus.style.display = 'none';
-                        downloadStatus.style.background = 'rgba(76, 175, 80, 0.1)';
-                        downloadStatus.style.color = 'var(--success)';
                     }, 3000);
                     
                 } catch (error) {
                     showError('Gagal mengunduh file: ' + error.message);
                     downloadStatus.style.display = 'none';
                 }
+            }
+            
+            // Fungsi untuk generate filename
+            function generateFilename(type) {
+                const cleanTitle = currentVideoData.title.replace(/[^a-zA-Z0-9\s]/g, '').replace(/\s+/g, '_');
+                const timestamp = new Date().toISOString().slice(0, 19).replace(/:/g, '-');
+                return `tiktok_${cleanTitle}_${timestamp}.${type === 'video' ? 'mp4' : 'mp3'}`;
             }
             
             // Update counter API yang tersedia
@@ -1481,7 +1370,6 @@
             
             // Initialize
             updateAvailableApisCounter();
-            updateRealtimeStats();
 
             // Force show all ads
             setTimeout(() => {
