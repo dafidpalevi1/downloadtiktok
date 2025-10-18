@@ -458,6 +458,90 @@
             color: white;
         }
         
+        /* Iklan Styles */
+        .ad-container {
+            width: 100%;
+            margin: 20px auto;
+            position: relative;
+            z-index: 99998;
+            text-align: center;
+        }
+        
+        .ad-label {
+            font-size: 0.8rem;
+            color: var(--text-secondary);
+            margin-bottom: 5px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        .ad-top {
+            margin-bottom: 30px;
+        }
+        
+        .ad-middle {
+            margin: 30px 0;
+        }
+        
+        .ad-bottom {
+            margin-top: 30px;
+        }
+        
+        /* Sticky Ad Verification */
+        .sticky-ad-verification {
+            position: absolute;
+            z-index: 99999;
+        }
+        
+        .sticky-ad-verification input[type="checkbox"] {
+            display: none;
+        }
+        
+        .sticky-ad-verification .ad-wrapper {
+            padding-top: auto;
+            padding-bottom: 0;
+        }
+        
+        .sticky-ad-verification .sticky-ad {
+            width: 100%;
+            height: auto;
+            position: fixed;
+            text-align: center;
+            font-size: 0;
+            top: 0;
+            left: 0;
+            right: 0;
+            margin: auto;
+            background: white;
+            padding: 10px 0;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        .sticky-ad-verification .close-btn {
+            top: 50%;
+            transform: translateY(-50%);
+            right: 24px;
+            position: absolute;
+            border-radius: 4px;
+            background: rgba(248, 248, 249, 0.70);
+            padding: 4px;
+            z-index: 99999;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .sticky-ad-verification .close-btn svg {
+            fill: #000000;
+            height: 16px;
+            width: 16px;
+        }
+        
+        .sticky-ad-verification input:checked + .ad-wrapper {
+            display: none;
+        }
+        
         /* Responsive Design */
         @media (max-width: 768px) {
             .container {
@@ -517,6 +601,14 @@
                 grid-template-columns: 1fr;
                 gap: 20px;
             }
+            
+            .ad-container iframe {
+                width: 90% !important;
+            }
+            
+            .sticky-ad-verification .close-btn {
+                right: 10px;
+            }
         }
         
         @media (max-width: 480px) {
@@ -556,10 +648,41 @@
                 height: 45px;
                 font-size: 1.2rem;
             }
+            
+            .ad-container iframe {
+                width: 100% !important;
+            }
         }
     </style>
 </head>
 <body>
+    <!-- Sticky Ad Verification -->
+    <div class="sticky-ad-verification">
+        <input autocomplete="off" type="checkbox" id="aadsstickymgwuivfb" hidden />
+        <div class="ad-wrapper">
+            <div class="sticky-ad">
+                <label for="aadsstickymgwuivfb" class="close-btn">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 490 490">
+                        <polygon points="456.851,0 245,212.564 33.149,0 0.708,32.337 212.669,245.004 0.708,457.678 33.149,490 245,277.443 456.851,490 489.292,457.678 277.331,245.004 489.292,32.337 "/>
+                    </svg>
+                </label>
+                <div id="frame">
+                    <iframe data-aa='2414184' src='//acceptable.a-ads.com/2414184/?size=Adaptive' 
+                            style='border:0; padding:0; width:70%; height:auto; overflow:hidden; margin: auto'></iframe>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Iklan Header -->
+    <div class="ad-container ad-top">
+        <div class="ad-label">Iklan</div>
+        <div id="frame">
+            <iframe data-aa='2414184' src='//acceptable.a-ads.com/2414184/?size=Adaptive'
+                style='border:0; padding:0; width:70%; height:auto; overflow:hidden;display: block;margin: auto'></iframe>
+        </div>
+    </div>
+
     <div class="container">
         <header>
             <div class="logo">
@@ -617,6 +740,15 @@
         <div class="api-counter">
             <p>API tersedia untuk digunakan:</p>
             <div class="counter-value" id="available-apis">6</div>
+        </div>
+        
+        <!-- Iklan Middle -->
+        <div class="ad-container ad-middle">
+            <div class="ad-label">Iklan</div>
+            <div id="frame">
+                <iframe data-aa='2414184' src='//acceptable.a-ads.com/2414184/?size=Adaptive'
+                    style='border:0; padding:0; width:70%; height:auto; overflow:hidden;display: block;margin: auto'></iframe>
+            </div>
         </div>
         
         <div class="result-section">
@@ -687,6 +819,15 @@
                 <div class="step-number">3</div>
                 <h3>Download</h3>
                 <p>Klik tombol download, sistem akan memproses video dan menampilkan preview. Pilih format yang diinginkan (MP4 atau MP3).</p>
+            </div>
+        </div>
+        
+        <!-- Iklan Bottom -->
+        <div class="ad-container ad-bottom">
+            <div class="ad-label">Iklan</div>
+            <div id="frame">
+                <iframe data-aa='2414184' src='//acceptable.a-ads.com/2414184/?size=Adaptive'
+                    style='border:0; padding:0; width:70%; height:auto; overflow:hidden;display: block;margin: auto'></iframe>
             </div>
         </div>
     </div>
