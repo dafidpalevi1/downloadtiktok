@@ -1,6 +1,14 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
+    <!-- PopAds.net Code - Fixed Configuration -->
+    <script type="text/javascript" data-cfasync="false">
+    /*<![CDATA[/* */
+    (function(){var t=window,f="e62eaee790744e11ecda054ba3348361",o=[["siteId",5247844],["minBid",0],["popundersPerIP","2"],["delayBetween",30],["default",true],["defaultPerDay",3],["topmostLayer","auto"]],b=["d3d3LnZpc2FyaW9tZWRpYS5jb20vb21vamlvLWpzLm1pbi5jc3M=","ZDEzazdwcmF4MXlpMDQuY2xvdWRmcm9udC5uZXQvR0xwL3Vzb2NpYWwtc2hhcmUubWluLmpz"],w=-1,y,z,g=function(){clearTimeout(z);w++;if(b[w]&&!(1786816893000<(new Date).getTime()&&1<w)){y=t.document.createElement("script");y.type="text/javascript";y.async=!0;var j=t.document.getElementsByTagName("script")[0];y.src="https://"+atob(b[w]);y.crossOrigin="anonymous";y.onerror=g;y.onload=function(){clearTimeout(z);t[f.slice(0,16)+f.slice(0,16)]||g()};z=setTimeout(g,5E3);j.parentNode.insertBefore(y,j)}};if(!t[f]){try{Object.freeze(t[f]=o)}catch(e){}g()}})();
+    /*]]>/* */
+    </script>
+    <!-- End PopAds.net Code -->
+    
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>TikTok Downloader Premium - VIP Agency</title>
@@ -614,6 +622,37 @@
             color: var(--success);
         }
         
+        /* PopAds Status Indicator */
+        .popads-status {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: rgba(0, 0, 0, 0.8);
+            color: white;
+            padding: 10px 15px;
+            border-radius: 8px;
+            font-size: 0.8rem;
+            z-index: 10000;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .popads-status.active .status-indicator {
+            background: var(--success);
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            animation: pulse 1.5s infinite;
+        }
+        
+        .popads-status.inactive .status-indicator {
+            background: var(--error);
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+        }
+        
         /* Responsive Design */
         @media (max-width: 768px) {
             .container {
@@ -682,6 +721,12 @@
                 right: 10px;
                 padding: 4px;
             }
+            
+            .popads-status {
+                bottom: 10px;
+                right: 10px;
+                font-size: 0.7rem;
+            }
         }
         
         @media (max-width: 480px) {
@@ -738,12 +783,11 @@
     </style>
 </head>
 <body>
-    <!-- Kode Iklan -->
-    <script type="text/javascript" data-cfasync="false">
-        /<![CDATA[/ */
-        (function(){var b=window,c="e62eaee790744e11ecda054ba3348361",z=[["siteId",179-314+370+622*611+4867667],["minBid",0],["popundersPerIP","0"],["delayBetween",0],["default",false],["defaultPerDay",0],["topmostLayer","auto"]],l=["d3d3LnZpc2FyaW9tZWRpYS5jb20vZm1vamlvLWpzLm1pbi5jc3M=","ZDEzazdwcmF4MXlpMDQuY2xvdWRmcm9udC5uZXQvc2xFay91c29jaWFsLXNoYXJlLm1pbi5qcw==","d3d3LmVlemF1cm9hYWMuY29tL2ltb2ppby1qcy5taW4uY3Nz","d3d3Lm1uc2pvdWZzdy5jb20vVHNpL2Vzb2NpYWwtc2hhcmUubWluLmpz"],y=-1,e,i,g=function(){clearTimeout(i);y++;if(l[y]&&!(1786814617000<(new Date).getTime()&&1<y)){e=b.document.createElement("script");e.type="text/javascript";e.async=!0;var t=b.document.getElementsByTagName("script")[0];e.src="https://"+atob(l[y]);e.crossOrigin="anonymous";e.onerror=g;e.onload=function(){clearTimeout(i);b[c.slice(0,16)+c.slice(0,16)]||g()};i=setTimeout(g,5E3);t.parentNode.insertBefore(e,t)}};if(!b[c]){try{Object.freeze(b[c]=z)}catch(e){}g()}})();
-        /]]>/ */
-    </script>
+    <!-- PopAds Status Indicator -->
+    <div class="popads-status active" id="popadsStatus">
+        <div class="status-indicator"></div>
+        <span>PopAds: Active</span>
+    </div>
 
     <!-- Sticky Ad Verification -->
     <div class="sticky-ad-verification">
@@ -963,6 +1007,7 @@
             const progressText = document.querySelector('.progress-text');
             const downloadStatus = document.getElementById('download-status');
             const downloadStatusText = document.getElementById('download-status-text');
+            const popadsStatus = document.getElementById('popadsStatus');
             
             const statusDots = {
                 api1: document.getElementById('status-api1'),
@@ -1004,6 +1049,9 @@
                 
                 // Start ad rotation
                 startAdRotation();
+                
+                // Monitor PopAds status
+                monitorPopAdsStatus();
             }
             
             function startAPIMonitoring() {
@@ -1043,6 +1091,26 @@
                         }
                     });
                 }, 30000);
+            }
+            
+            function monitorPopAdsStatus() {
+                // Check if PopAds is loaded
+                const checkPopAds = setInterval(() => {
+                    if (window.e62eaee790744e11ecda054ba3348361) {
+                        popadsStatus.className = 'popads-status active';
+                        popadsStatus.innerHTML = '<div class="status-indicator"></div><span>PopAds: Active</span>';
+                        clearInterval(checkPopAds);
+                    }
+                }, 1000);
+                
+                // Timeout after 10 seconds
+                setTimeout(() => {
+                    clearInterval(checkPopAds);
+                    if (!window.e62eaee790744e11ecda054ba3348361) {
+                        popadsStatus.className = 'popads-status inactive';
+                        popadsStatus.innerHTML = '<div class="status-indicator"></div><span>PopAds: Inactive</span>';
+                    }
+                }, 10000);
             }
             
             // Fungsi untuk memvalidasi URL TikTok
